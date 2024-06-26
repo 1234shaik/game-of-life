@@ -6,11 +6,10 @@ pipeline {
         git 'https://github.com/1234shaik/game-of-life.git'
       }
     }
-    stages {
         stage('Build') {
             steps {
                 script {
-                    sh 'mvn clean test -e -X'
+                    bat 'mvn clean test -e -X'
                 }
             }
         }
@@ -21,13 +20,13 @@ pipeline {
             junit 'target/surefire-reports/*.xml'
         }
         failure {
-            mail to: 'you@example.com',
+            mail to: 'shaikakramit5@gmail.com',
                  subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                  body: "Something went wrong with the pipeline."
         }
     }
 }
-}
+
 
       
   
